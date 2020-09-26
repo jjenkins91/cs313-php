@@ -1,0 +1,160 @@
+a {
+  color: #76ead7;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gray;
+}
+
+body {
+  margin: 0;
+}
+
+.bodyContent {
+  height: 900px; /* 800px*/
+  width: auto;
+  background-color: #393e46;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.comingSoonMessage {
+  font-size: 50px;
+
+}
+
+.description{
+  font-size: 30px;
+}
+
+.extraSpace {
+  height: 100px;
+  width: 800px;
+  color:
+}
+
+.footer {
+  height: 120px;
+  background-color: #b2ebf2;
+}
+
+.imagePosition{
+  height: 500px;
+  width: auto;
+  background-color: #393e46;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.myImage {
+  height: 488px;
+  width:342px;
+}
+
+.navigationBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #393e46;
+  height: 125px;
+  width: auto;
+  margin: 0;
+  border: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navigationTabs {
+  margin-top: 98px;
+  margin-right: 25px;
+  width: 500px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.paragraphBox{
+  height: 400px;
+  width:400px;
+}
+
+.sideNavigationBar {
+  /* position: fixed; */
+  margin-top: 50px;
+  margin-left: 50px;
+  height: 800px;
+  width: 180px;
+  background-color: #393e46;
+
+  display: flex;
+  flex-direction: column;
+  justify-content:
+}
+
+.socialMediaIcons {
+  height: 50px;
+  width: 50px;
+}
+
+.socialMediaIcons:hover {
+
+
+
+}
+
+.titlePosition {
+  margin-top: 190px;
+  margin-right: 500px;
+  width: 800px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: 393e46;
+}
+
+#copyright {
+  margin: 0;
+  padding-top: 75px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+#home {
+  padding-top: 75px;
+  padding-right: 100px;
+}
+
+#jjlogo {
+  width: 154px;
+  height: 126px;
+
+}
+
+#title1 {
+  margin: 0;
+  color: #838383;
+  font-size: 20px;
+}
+
+#title2 {
+  margin-top: 50px;
+  color: #fbe6d4;
+  font-size: 100px;
+}
+
+#title3 {
+  margin: 0;
+  color: #838383;
+  font-size: 30px;
+}
+
