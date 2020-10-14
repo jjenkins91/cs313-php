@@ -1,6 +1,6 @@
 <?php
 
-
+$book = $_GET['book'];
 try
 {
   $dbUrl = getenv('DATABASE_URL');
@@ -33,13 +33,31 @@ catch (PDOException $ex)
     <title></title>
   </head>
   <body>
+    <form class="" action="week05.php" method="GET">
+    <label for="book">Book:</label>
+    <input id="book" type="text" name="book" value="">
+    <button type="submit" name="button">Submit</button>
     <h1>Scripture Resources</h1>
 <?php
-foreach ($db->query('SELECT * FROM scriptures') as $row)
+if ($book) {
+  $stmt = $db->prepare('SELECT * FROM scriptures WHERE book = :book');
+  $stmt->bindValue(':book', $book, PDO::PARAM_STR);
+  $stmt->execute();
+  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+else {
+  $stmt = $db->prepare('SELECT * FROM scriptures');
+  $stmt->execute();
+  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+foreach ($rows as $row)
 {
   echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . '"' . $row['content'] . '"</p>';
 }
 
  ?>
+ </form>
   </body>
 </html>
