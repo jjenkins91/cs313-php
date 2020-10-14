@@ -56,7 +56,6 @@ foreach ($rows as $row)
 {
   echo '<p><a href="details.php?id=' . $row['id'] . '">' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</a></p>';
 }
-
  ?>
  </form>
   </body>

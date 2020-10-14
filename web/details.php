@@ -33,19 +33,21 @@ catch (PDOException $ex)
     <title></title>
   </head>
   <body>
-    <form class="" action="week05.php" method="GET">
-    <label for="book">Book:</label>
-    <input id="book" type="text" name="book" value="">
-    <button type="submit" name="button">Submit</button>
-    <h1>Scripture Resources</h1>
+
+    <h1>Scripture Reference</h1>
 <?php
 if ($id) {
   $stmt = $db->prepare('SELECT * FROM scriptures WHERE id = :id');
   $stmt->bindValue(':id', $id, PDO::PARAM_INT);
   $stmt->execute();
-  $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . '"' . $row['content'] . '"</p>';
+  // echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . '"' . $row['content'] . '"</p>';
+
+  foreach ($rows as $row)
+  {
+    echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . '"' . $row['content'] . '"</p>';
+  }
 }
 // else {
 //   $stmt = $db->prepare('SELECT * FROM scriptures');
@@ -60,6 +62,5 @@ if ($id) {
 // }
 
  ?>
- </form>
   </body>
 </html>
