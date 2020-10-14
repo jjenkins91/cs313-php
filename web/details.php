@@ -1,6 +1,6 @@
 <?php
 
-$book = $_GET['book'];
+$id = $_GET['id'];
 try
 {
   $dbUrl = getenv('DATABASE_URL');
@@ -39,23 +39,25 @@ catch (PDOException $ex)
     <button type="submit" name="button">Submit</button>
     <h1>Scripture Resources</h1>
 <?php
-if ($book) {
-  $stmt = $db->prepare('SELECT * FROM scriptures WHERE book = :book');
-  $stmt->bindValue(':book', $book, PDO::PARAM_STR);
+if ($id) {
+  $stmt = $db->prepare('SELECT * FROM scriptures WHERE id = :id');
+  $stmt->bindValue(':id', $id, PDO::PARAM_INT);
   $stmt->execute();
-  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . '"' . $row['content'] . '"</p>';
 }
-else {
-  $stmt = $db->prepare('SELECT * FROM scriptures');
-  $stmt->execute();
-  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+// else {
+//   $stmt = $db->prepare('SELECT * FROM scriptures');
+//   $stmt->execute();
+//   $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// }
 
 
-foreach ($rows as $row)
-{
-  echo '<p><a href="details.php?id=' . $row['id'] . '">' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</a></p>';
-}
+// foreach ($rows as $row)
+// {
+//   echo '<p><b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . '"' . $row['content'] . '"</p>';
+// }
 
  ?>
  </form>
