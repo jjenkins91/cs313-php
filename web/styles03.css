@@ -82,6 +82,16 @@ body {
   justify-content: space-around;
 }
 
+.bodyContent6{
+  height: 350px;
+  width: auto;
+  background-color: white;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .bodyContentConfirmation {
   height: 200px;
   width: auto;
