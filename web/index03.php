@@ -55,10 +55,10 @@ $_SESSION["button4"] = $_POST["button4"];
   <h1 class="title2">Click "Add" To Place In Cart</h1>
 </div>
 <div class="bodyContent2">
-  <img class="taurus" name="KLtaurus" src="Taurus.jpeg" alt="taurusPolish">
-  <img class="coconutMilk" src="coconutMilk.jpeg" alt="coconutMilkPolish">
-  <img class="gold" src="KLgold.jpeg" alt="GoldPolish">
-  <img class="miami" src="KLmiami.jpeg" alt="MiamiPolish">
+   <img class="taurus" name="KLtaurus" src="Taurus.jpeg" alt="taurusPolish">
+   <img class="coconutMilk" src="coconutMilk.jpeg" alt="coconutMilkPolish">
+   <img class="gold" src="KLgold.jpeg" alt="GoldPolish">
+   <img class="miami" src="KLmiami.jpeg" alt="MiamiPolish">
 </div>
 <div class="bodyContent3">
   <input class="first" type="checkbox" name="button1" value="Taurus"></button>
@@ -67,10 +67,18 @@ $_SESSION["button4"] = $_POST["button4"];
   <input class="fourth" type="checkbox" name="button4" value="Miami"></button>
 </div>
 <div class="bodyContent3">
-  <h2>Taurus</h2>
+  <?php
+  foreach ($db->query('SELECT product_name FROM product') as $row)
+  {
+    echo $row['username'];
+    // echo '<br/>';
+  }
+   ?>
+
+  <!-- <h2>Taurus</h2>
   <h2>Coconut Milk</h2>
   <h2>Gold</h2>
-  <h2>Miami</h2>
+  <h2>Miami</h2> -->
 </div>
 <div class="submitButtonDiv">
   <button class="submitButton" type="submit" name="button">Add</button>
