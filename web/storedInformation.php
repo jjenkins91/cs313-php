@@ -47,12 +47,12 @@ session_start();
 </div>
 <div class="bodyContentConfirmation">
   <?php
-  $variable = ($db->query('SELECT customer_username From customer_information') as $row)
-
+  foreach ($db->query('SELECT customer_username, customer_password') as $row)
+  {
     echo '<p><b>' . 'user: ' . $row['customer_username'] . '</b></p>';
-    echo ' street: ' . $row['address_street'];
+    echo ' password: ' . $row['customer_password'];
     echo '<br/>';
-
+  }
    ?>
 </div>
 <div class="footer">
