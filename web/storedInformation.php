@@ -51,8 +51,8 @@ session_start();
     Inner Join address a on c.customer_id = a.customer_id
     WHERE customer_id = 1') as $row)
   {
-    echo '<p><b>' . 'user: ' . $row['c.customer_username'] . '</b></p>';
-    echo ' street: ' . $row['a.address_street'];
+    echo '<p><b>' . 'user: ' . $row['customer_username'] . '</b></p>';
+    echo ' street: ' . $row['address_street'];
     echo '<br/>';
   }
    ?>
