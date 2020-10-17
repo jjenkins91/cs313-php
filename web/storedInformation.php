@@ -49,8 +49,8 @@ session_start();
   <?php
   foreach ($db->query('SELECT customer_username, customer_password From customer_information') as $row)
   {
-    echo '<p><b>' . 'user: ' . $row['customer_username'] . '</b></p>';
-    echo ' password: ' . $row['customer_password'];
+    echo '<h1><b>' . 'user: ' . $row['customer_username'] . '</b></h1>';
+    echo '<h1><b>' . ' password: ' . $row['customer_password'] . '</b></h1>';
     echo '<br/>';
   }
    ?>
