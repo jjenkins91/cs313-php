@@ -47,14 +47,12 @@ session_start();
 </div>
 <div class="bodyContentConfirmation">
   <?php
-  foreach ($db->query('SELECT customer_username, customer_username address_street FROM customer_information c
-    Inner Join address a on customer_id = customer_id
-    WHERE customer_id = 1') as $row)
-  {
+  $variable = ($db->query('SELECT customer_username From customer_information') as $row)
+
     echo '<p><b>' . 'user: ' . $row['customer_username'] . '</b></p>';
     echo ' street: ' . $row['address_street'];
     echo '<br/>';
-  }
+
    ?>
 </div>
 <div class="footer">
