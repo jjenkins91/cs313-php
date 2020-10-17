@@ -43,7 +43,7 @@ session_start();
   <a href="cart.php">Cart</a>
 </div>
 <div class="confirmationTitleSpace">
-  <h1 class="confirmationTitle">Address Confirmation</h1>
+  <h1 class="confirmationTitle">Database Information Confirmation</h1>
 </div>
 <div class="bodyContentConfirmation">
   <?php
