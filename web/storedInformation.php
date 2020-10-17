@@ -54,20 +54,11 @@ session_start();
     echo '<br/>';
   }
    ?>
-   <?php
-   foreach ($db->query('SELECT customer_username, customer_password From customer_information Where customer_id = 1') as $row)
-   {
-     echo '<h1><b>' . 'user: ' . $row['customer_username'] . '</b></h1>';
-     echo '<h1><b>' . ' password: ' . $row['customer_password'] . '</b></h1>';
-     echo '<br/>';
-   }
-    ?>
 
    <?php
    foreach ($db->query('SELECT address_street, address_city, address_state, address_zipCode From address') as $row)
    {
-     echo '<h1><b>' . 'Address: ' . $row['address_street']. $row['address_city']. $row['address_state']
-     . $row['address_zipCode'] . '</b></h1>';
+     echo '<h1><b>' . 'Address: ' . $row['address_street'] . $row['address_city'] . $row['address_state'] . $row['address_zipCode'] . '</b></h1>';
    }
     ?>
 </div>
