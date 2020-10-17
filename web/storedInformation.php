@@ -47,10 +47,12 @@ session_start();
 </div>
 <div class="bodyContentConfirmation">
   <?php
-  foreach ($db->query('SELECT customer_username, customer_username FROM customer_information WHERE customer_id = 1') as $row)
+  foreach ($db->query('SELECT c.customer_username, c.customer_username a.address_street FROM customer_information c
+    Inner Join address a on c.customer_id = a.customer_id
+    WHERE customer_id = 1') as $row)
   {
-    echo '<p><b>' . 'user: ' . $row['customer_username'] . '</b></p>';
-    echo ' password: ' . $row['customer_username'];
+    echo '<p><b>' . 'user: ' . $row['c.customer_username'] . '</b></p>';
+    echo ' street: ' . $row['a.address_street'];
     echo '<br/>';
   }
    ?>
