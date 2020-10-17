@@ -58,7 +58,7 @@ session_start();
    <?php
    foreach ($db->query('SELECT address_street, address_city, address_state, address_zipCode From address') as $row)
    {
-     echo '<h1><b>' . 'Address: ' . $row['address_street'] . $row['address_city'] . $row['address_state'] . $row['address_zipCode'] . '</b></h1>';
+     echo '<h1><b>' . 'Address: ' . $row['address_street'] . '</b></h1>';
    }
     ?>
 </div>
