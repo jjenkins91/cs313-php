@@ -56,9 +56,9 @@ session_start();
    ?>
 
    <?php
-   foreach ($db->query('SELECT customer_username, customer_password From customer_information Where customer_id = 1') as $row)
+   foreach ($db->query('SELECT address_street From address') as $row)
    {
-     echo '<h1><b>' . 'user: ' . $row['customer_username'] . '</b></h1>';
+     echo '<h1><b>' . 'user: ' . $row['address_street'] . '</b></h1>';
      echo '<h1><b>' . ' password: ' . $row['customer_password'] . '</b></h1>';
      echo '<br/>';
    }
