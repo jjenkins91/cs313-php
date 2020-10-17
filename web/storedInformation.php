@@ -51,7 +51,7 @@ session_start();
   {
     echo '<h1><b>' . 'user: ' . $row['customer_username'] . '</b></h1>';
     echo '<h1><b>' . ' password: ' . $row['customer_password'] . '</b></h1>';
-    echo '<br/>';
+    // echo '<br/>';
   }
    ?>
    </div>
