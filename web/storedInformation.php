@@ -57,10 +57,10 @@ session_start();
    </div>
 <div class="bodyContent3">
   <?php
-  foreach ($db->query('SELECT address_street,address_city From address') as $row)
+  foreach ($db->query('SELECT address_street, address_city, address_state, address_zipCode From address') as $row)
   {
-    echo '<h2><b>' . 'user: ' . $row['address_street'] . $row['address_city'] . '</b></h2>';
-    echo '<h2><b>' . ' password: ' . $row['customer_password'] . '</b></h2>';
+    echo '<h2><b>' . 'user: ' . $row['address_street'] . ' ' . $row['address_city'] . ' ' . $row['address_state'] . ' ' . $row['address_zipCode'] . '</b></h2>';
+    // echo '<h2><b>' . ' password: ' . $row['customer_password'] . '</b></h2>';
     // echo '<br/>';
   }
    ?>
