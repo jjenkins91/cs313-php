@@ -47,10 +47,10 @@ session_start();
 </div>
 <div class="bodyContentConfirmation">
   <?php
-  foreach ($db->query('SELECT username, password FROM customer_information') as $row)
+  foreach ($db->query('SELECT customer_username, customer_username FROM customer_information') as $row)
   {
-    echo '<p><b>' . 'user: ' . $row['username'] . '</b></p>';
-    echo ' password: ' . $row['password'];
+    echo '<p><b>' . 'user: ' . $row['customer_username'] . '</b></p>';
+    echo ' password: ' . $row['customer_username'];
     echo '<br/>';
   }
    ?>
