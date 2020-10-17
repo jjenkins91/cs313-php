@@ -71,7 +71,7 @@ $_SESSION["button4"] = $_POST["button4"];
   foreach ($db->query('SELECT product_name FROM product') as $row)
   {
     echo $row['product_name'];
-    // echo '<br/>';
+    echo '<br/>';
   }
    ?>
 
