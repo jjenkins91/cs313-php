@@ -54,8 +54,9 @@ session_start();
     echo '<br/>';
   }
    ?>
+
    <?php
-   foreach ($db->query('SELECT address_street, address_city, address_state, address_zipCode From address Where customer_id = 1') as $row)
+   foreach ($db->query('SELECT address_street, address_city, address_state, address_zipCode From address') as $row)
    {
      echo '<h1><b>' . 'Address: ' . $row['address_street']. $row['address_city']. $row['address_state']
      . $row['address_zipCode'] . '</b></h1>';
