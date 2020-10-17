@@ -54,16 +54,16 @@ session_start();
     echo '<br/>';
   }
    ?>
-
-   <?php
-   foreach ($db->query('SELECT address_street From address') as $row)
-   {
-     echo '<h1><b>' . 'user: ' . $row['address_street'] . '</b></h1>';
-     echo '<h1><b>' . ' password: ' . $row['customer_password'] . '</b></h1>';
-     echo '<br/>';
-   }
-    ?>
-
+   </div>
+<div class="bodyContent3">
+  <?php
+  foreach ($db->query('SELECT address_street From address') as $row)
+  {
+    echo '<h1><b>' . 'user: ' . $row['address_street'] . '</b></h1>';
+    echo '<h1><b>' . ' password: ' . $row['customer_password'] . '</b></h1>';
+    echo '<br/>';
+  }
+   ?>
 
 </div>
 <div class="footer">
