@@ -37,7 +37,7 @@ $_SESSION["button4"] = $_POST["button4"];
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="styles03.css">
+    <link rel="stylesheet" href="styles033.css">
   </head>
 <form class="" action="index03.php" method="post">
   <body>
