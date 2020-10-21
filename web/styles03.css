@@ -17,13 +17,13 @@ body {
   margin: 0;
 }
 
-.addressLine {
+/* .addressLine {
   text-align: center;
   height: 602px;
   width: auto;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .bodyContent{
   height: 800px;
