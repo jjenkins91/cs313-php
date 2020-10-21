@@ -48,14 +48,6 @@ session_start();
 </div>
 <form class="" action="confirmation.php" method="post">
 <div class="addressLine">
-  <div class="">
-    <h4>First Name</h4>
-    <input type="text" name="address1" value="">
-  </div>
-  <div class="">
-    <h4>Last Name</h4>
-    <input type="text" name="address1" value="">
-  </div>
 <div class="">
   <h4>Address 1</h4>
   <input type="text" name="address1" value="">
