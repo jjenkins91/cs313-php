@@ -1,4 +1,4 @@
-/* a {
+a {
   margin: 0px;
   font-family: "Courier New", Courier, monospace;
   text-align: center;
@@ -80,7 +80,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-} */
+}
 
 .bodyContent6{
   height: 450px;
