@@ -19,7 +19,7 @@ body {
 
 .addressLine {
   text-align: center;
-  height: 800px;
+  height: 350px;
   width: auto;
   display: flex;
   flex-direction: column;
@@ -276,7 +276,7 @@ height: 40px;
 
 .placeOrderSpace {
   text-align: center;
-  height: 120px;
+  height: 300px;
   width: auto;
 }
 
