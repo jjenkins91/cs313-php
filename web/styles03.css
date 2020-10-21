@@ -19,7 +19,7 @@ body {
 
 .addressLine {
   text-align: center;
-  height: 600px;
+  height: 800px;
   width: auto;
   display: flex;
   flex-direction: column;
