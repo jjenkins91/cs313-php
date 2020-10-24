@@ -33,16 +33,16 @@ $stmt->bindValue(':firstName', $firstName, PDO::PARAM_STR);
 $stmt->bindValue(':lastName', $lastName, PDO::PARAM_STR);
 $stmt->execute();
 
-$customer_id = $db->lastInsertId('customer_info_id_seq');
+$customer_id = $db->lastInsertId('customer_info_customer_id_seq');
 
-$stmt = $db->prepare('INSERT INTO address1(address1, address_city, address_state, address_zip_code) VALUES (:address1, :city, :state, :zipCode);');
+$stmt = $db->prepare('INSERT INTO address2(address_street, address_city, address_state, address_zip_code) VALUES (:address1, :city, :state, :zipCode);');
 $stmt->bindValue(':address1', $address1, PDO::PARAM_STR);
 $stmt->bindValue(':city', $city, PDO::PARAM_STR);
 $stmt->bindValue(':state', $state, PDO::PARAM_STR);
 $stmt->bindValue(':zipCode', $zipCode, PDO::PARAM_INT);
 $stmt->execute();
 
-$address_id = $db->lastInsertId('address1_id_seq');
+$address_id = $db->lastInsertId('address2_address_id_seq');
 
   $stmt = $db->prepare('INSERT INTO orders1 (customer_id) VALUES (:address1_id)');
   $stmt->bindValue(':address1_id', $address_id, PDO::PARAM_INT);
@@ -129,15 +129,15 @@ if ($_SESSION["button4"]) {
   </h1>
   <div class="trial">
     <?php
-      $stmt = $db->prepare("SELECT address1.address1_id, address1, address_city, address_state, address_zip_code
-        FROM address1 LEFT JOIN orders1
-        ON order1.address_id = address1.address_id;");
+      $stmt = $db->prepare("SELECT address2.address_id, address_street, address_city, address_state, address_zip_code
+        FROM address2 LEFT JOIN orders1
+        ON order1.address_id = address2.address_id;");
         // LEFT JOIN topic ON topic.id = scriptures_topic.topic_id
         // GROUP BY scriptures.id
       $stmt->execute();
       $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      echo $orders[0]["address1"];
+      echo $orders[0]["address_street"];
 
       // array_to_string(array_agg(topic.name), ',') AS topics
 
