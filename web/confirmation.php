@@ -135,7 +135,7 @@ if ($_SESSION["button4"]) {
         // LEFT JOIN topic ON topic.id = scriptures_topic.topic_id
         // GROUP BY scriptures.id
       $stmt->execute();
-      $scriptures = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       // array_to_string(array_agg(topic.name), ',') AS topics
 
