@@ -29,17 +29,17 @@ $state = $_POST["state"];
 $zipCode = $_POST["zipCode"];
 
 $stmt = $db->prepare('INSERT INTO customer_info(customer_first_name, customer_last_name) VALUES (:firstName, :lastName);');
-$stmt->bindValue(':customer_first_name', $firstName, PDO::PARAM_STR);
-$stmt->bindValue(':customer_last_name', $lastName, PDO::PARAM_STR);
+$stmt->bindValue(':firstName', $firstName, PDO::PARAM_STR);
+$stmt->bindValue(':lastName', $lastName, PDO::PARAM_STR);
 $stmt->execute();
 
 $customer_id = $db->lastInsertId('customer_info_id_seq');
 
 $stmt = $db->prepare('INSERT INTO address1(address_street, address_city, address_state, address_zip_code) VALUES (:address1, :city, :state, :zipCode);');
-$stmt->bindValue(':address_street', $address1, PDO::PARAM_STR);
-$stmt->bindValue(':address_city', $city, PDO::PARAM_STR);
-$stmt->bindValue(':address_state', $state, PDO::PARAM_STR);
-$stmt->bindValue(':address_zip_code', $zipCode, PDO::PARAM_INT);
+$stmt->bindValue(':address1', $address1, PDO::PARAM_STR);
+$stmt->bindValue(':city', $city, PDO::PARAM_STR);
+$stmt->bindValue(':state', $state, PDO::PARAM_STR);
+$stmt->bindValue(':zipCode', $zipCode, PDO::PARAM_INT);
 $stmt->execute();
 
 $address_id = $db->lastInsertId('address1_id_seq');
@@ -136,6 +136,8 @@ if ($_SESSION["button4"]) {
         // GROUP BY scriptures.id
       $stmt->execute();
       $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      echo $orders[0]["address1"];
 
       // array_to_string(array_agg(topic.name), ',') AS topics
 
