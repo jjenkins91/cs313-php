@@ -1,25 +1,25 @@
 <?php
-// try
-// {
-//   $dbUrl = getenv('DATABASE_URL');
-//
-//   $dbOpts = parse_url($dbUrl);
-//
-//   $dbHost = $dbOpts["host"];
-//   $dbPort = $dbOpts["port"];
-//   $dbUser = $dbOpts["user"];
-//   $dbPassword = $dbOpts["pass"];
-//   $dbName = ltrim($dbOpts["path"],'/');
-//
-//   $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-//
-//   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-// }
-// catch (PDOException $ex)
-// {
-//   echo 'Error!: ' . $ex->getMessage();
-//   die();
-// }
+try
+{
+  $dbUrl = getenv('DATABASE_URL');
+
+  $dbOpts = parse_url($dbUrl);
+
+  $dbHost = $dbOpts["host"];
+  $dbPort = $dbOpts["port"];
+  $dbUser = $dbOpts["user"];
+  $dbPassword = $dbOpts["pass"];
+  $dbName = ltrim($dbOpts["path"],'/');
+
+  $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $ex)
+{
+  echo 'Error!: ' . $ex->getMessage();
+  die();
+}
  ?>
 
 <?php
@@ -50,31 +50,31 @@ session_start();
 <div class="addressLine">
   <div class="">
     <h4>First Name</h4>
-    <input type="text" name="firstName" value="">
+    <input id="firstName"type="text" name="firstName" value="">
   </div>
   <div class="">
     <h4>Last Name</h4>
-    <input type="text" name="lastName" value="">
+    <input id="lastName"type="text" name="lastName" value="">
   </div>
 <div class="">
   <h4>Address 1</h4>
-  <input type="text" name="address1" value="">
+  <input id="address1"type="text" name="address1" value="">
 </div>
 <div class="">
   <h4>Address 2</h4>
-  <input type="text" name="address2" value="">
+  <input id="address2"type="text" name="address2" value="">
 </div>
 <div class="">
   <h4>City</h4>
-  <input type="text" name="city" value="">
+  <input id="city"type="text" name="city" value="">
 </div>
 <div class="">
   <h4>State</h4>
-  <input type="text" name="state" value="">
+  <input id="state"type="text" name="state" value="">
 </div>
 <div class="">
   <h4>Zip Code</h4>
-  <input type="text" name="zipCode" value="">
+  <input id="zipCode"type="text" name="zipCode" value="">
 </div>
 </div>
 <div class="placeOrderSpace">

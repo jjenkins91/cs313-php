@@ -20,6 +20,43 @@ catch (PDOException $ex)
   echo 'Error!: ' . $ex->getMessage();
   die();
 }
+
+$firstName = $_POST["firstName"];
+$lastName = $_POST["lastName"];
+$address1 = $_POST["address1"];
+$city = $_POST["city"];
+$state = $_POST["state"];
+$zipCode = $_POST["zipCode"];
+
+$stmt = $db->prepare('INSERT INTO customer_info(customer_first_name, customer_last_name) VALUES (:firstName, :lastName);');
+$stmt->bindValue(':customer_first_name', $firstName, PDO::PARAM_STR);
+$stmt->bindValue(':customer_last_name', $lastName, PDO::PARAM_STR);
+$stmt->execute();
+
+$customer_id = $db->lastInsertId('customer_info_id_seq');
+
+$stmt = $db->prepare('INSERT INTO address1(address_street, address_city, address_state, address_zip_code) VALUES (:address1, :city, :state, :zipCode);');
+$stmt->bindValue(':address_street', $address1, PDO::PARAM_STR);
+$stmt->bindValue(':address_city', $city, PDO::PARAM_STR);
+$stmt->bindValue(':address_state', $state, PDO::PARAM_STR);
+$stmt->bindValue(':address_zip_code', $zipCode, PDO::PARAM_INT);
+$stmt->execute();
+
+$address_id = $db->lastInsertId('address1_id_seq');
+
+  $stmt = $db->prepare('INSERT INTO orders1 (customer_id) VALUES (:address1_id)');
+  $stmt->bindValue(':address1_id', $address_id, PDO::PARAM_INT);
+  $stmt->execute();
+
+
+// foreach ($topics as $topic) {
+//   $stmt = $db->prepare('INSERT INTO scriptures_topic VALUES (DEFAULT, :scripture_id, :topic_id)');
+//   $stmt->bindValue(':scripture_id', $scripture_id, PDO::PARAM_INT);
+//   $stmt->bindValue(':topic_id', $topic['id'], PDO::PARAM_INT);
+//   $stmt->execute();
+//
+// }
+
  ?>
 
 <?php
@@ -90,6 +127,26 @@ if ($_SESSION["button4"]) {
 }
 ?>
   </h1>
+  <div class="trial">
+    <?php
+      $stmt = $db->prepare("SELECT address1.address1_id, address1, address_city, address_state, address_zip_code
+        FROM address1 LEFT JOIN orders1
+        ON order1.address_id = address1.address_id;");
+        // LEFT JOIN topic ON topic.id = scriptures_topic.topic_id
+        // GROUP BY scriptures.id
+      $stmt->execute();
+      $scriptures = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      // array_to_string(array_agg(topic.name), ',') AS topics
+
+      // foreach ($scriptures as $scripture) {
+      //   echo "<li>{$scripture['book']} {$scripture['chapter']}:
+      //   {$scripture['verse']} - <br>{$scripture['content']}
+      //   <br>{$scripture['topics']}</li>";
+      // }
+
+     ?>
+  </div>
 </div>
 <div class="footer">
   <h3 class="copyright">Copyright© October 2020 Jason Jenkins</h3>
