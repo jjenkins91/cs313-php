@@ -28,6 +28,11 @@ $city = $_POST["city"];
 $state = $_POST["state"];
 $zipCode = $_POST["zipCode"];
 
+echo $address1;
+echo $city;
+echo $state;
+echo $zipCode;
+
 $stmt = $db->prepare('INSERT INTO customer_info(customer_first_name, customer_last_name) VALUES (:firstName, :lastName);');
 $stmt->bindValue(':firstName', $firstName, PDO::PARAM_STR);
 $stmt->bindValue(':lastName', $lastName, PDO::PARAM_STR);
@@ -35,7 +40,10 @@ $stmt->execute();
 
 $customer_id = $db->lastInsertId('customer_info_customer_id_seq');
 
-$stmt = $db->prepare('INSERT INTO address2(address_street, address_city, address_state, address_zip_code) VALUES (:address1, :city, :state, :zipCode);');
+echo $customer_id;
+
+$stmt = $db->prepare('INSERT INTO address2(customer_id, address_street, address_city, address_state, address_zip_code) VALUES (:customer_id, :address1, :city, :state, :zipCode);');
+$stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
 $stmt->bindValue(':address1', $address1, PDO::PARAM_STR);
 $stmt->bindValue(':city', $city, PDO::PARAM_STR);
 $stmt->bindValue(':state', $state, PDO::PARAM_STR);
@@ -44,8 +52,8 @@ $stmt->execute();
 
 $address_id = $db->lastInsertId('address2_address_id_seq');
 
-  $stmt = $db->prepare('INSERT INTO orders1 (customer_id) VALUES (:address1_id)');
-  $stmt->bindValue(':address1_id', $address_id, PDO::PARAM_INT);
+  $stmt = $db->prepare('INSERT INTO orders1 (address_id) VALUES (:address_id)');
+  $stmt->bindValue(':address_id', $address_id, PDO::PARAM_INT);
   $stmt->execute();
 
 
@@ -127,28 +135,28 @@ if ($_SESSION["button4"]) {
 }
 ?>
   </h1>
-  <div class="trial">
-    <?php
-      $stmt = $db->prepare("SELECT address2.address_id, address_street, address_city, address_state, address_zip_code
-        FROM address2 LEFT JOIN orders1
-        ON order1.address_id = address2.address_id;");
-        // LEFT JOIN topic ON topic.id = scriptures_topic.topic_id
-        // GROUP BY scriptures.id
-      $stmt->execute();
-      $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+</div>
+<div class="trial">
+  <?php
+    $stmt = $db->prepare("SELECT address2.address_id, address_street, address_city, address_state, address_zip_code
+      FROM address2 LEFT JOIN orders1
+      ON order1.address_id = address2.address_id;");
+      // LEFT JOIN topic ON topic.id = scriptures_topic.topic_id
+      // GROUP BY scriptures.id
+    $stmt->execute();
+    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      echo $orders[0]["address_street"];
+    echo $orders[0]["address_street"];
 
-      // array_to_string(array_agg(topic.name), ',') AS topics
+    // array_to_string(array_agg(topic.name), ',') AS topics
 
-      // foreach ($scriptures as $scripture) {
-      //   echo "<li>{$scripture['book']} {$scripture['chapter']}:
-      //   {$scripture['verse']} - <br>{$scripture['content']}
-      //   <br>{$scripture['topics']}</li>";
-      // }
+    // foreach ($scriptures as $scripture) {
+    //   echo "<li>{$scripture['book']} {$scripture['chapter']}:
+    //   {$scripture['verse']} - <br>{$scripture['content']}
+    //   <br>{$scripture['topics']}</li>";
+    // }
 
-     ?>
-  </div>
+   ?>
 </div>
 <div class="footer">
   <h3 class="copyright">Copyright© October 2020 Jason Jenkins</h3>
