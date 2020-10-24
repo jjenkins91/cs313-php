@@ -88,16 +88,16 @@ session_start();
 <div class="bodyContentConfirmation">
   <h1>
  <?php
-$address1 = $_POST["address1"];
-echo $address1 . ' ';
-$address2 = $_POST["address2"];
-echo $address2 . ' ';
-$city = $_POST["city"];
-echo $city . ', ';
-$state = $_POST["state"];
-echo $state . ' ';
-$zipCode = $_POST["zipCode"];
-echo $zipCode;
+// $address1 = $_POST["address1"];
+// echo $address1 . ' ';
+// $address2 = $_POST["address2"];
+// echo $address2 . ' ';
+// $city = $_POST["city"];
+// echo $city . ', ';
+// $state = $_POST["state"];
+// echo $state . ' ';
+// $zipCode = $_POST["zipCode"];
+// echo $zipCode;
   ?>
   </h1>
 </div>

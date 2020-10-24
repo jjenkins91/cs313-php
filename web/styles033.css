@@ -354,10 +354,11 @@ height: 40px;
 }
 
 .trial {
+  text-align: center;
   height: 500px;
   width: auto;
   margin: 0px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
