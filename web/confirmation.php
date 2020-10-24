@@ -35,7 +35,7 @@ $stmt->execute();
 
 $customer_id = $db->lastInsertId('customer_info_id_seq');
 
-$stmt = $db->prepare('INSERT INTO address1(address_street, address_city, address_state, address_zip_code) VALUES (:address1, :city, :state, :zipCode);');
+$stmt = $db->prepare('INSERT INTO address1(address1, address_city, address_state, address_zip_code) VALUES (:address1, :city, :state, :zipCode);');
 $stmt->bindValue(':address1', $address1, PDO::PARAM_STR);
 $stmt->bindValue(':city', $city, PDO::PARAM_STR);
 $stmt->bindValue(':state', $state, PDO::PARAM_STR);
