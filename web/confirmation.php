@@ -137,7 +137,7 @@ if ($_SESSION["button4"]) {
       FROM address2 LEFT JOIN orders1
       ON orders1.customer_id = address2.customer_id
       LEFT JOIN customer_info ON customer_info.customer_id = orders1.customer_id
-      WHERE customer_id = :customer_id;");
+      WHERE orders1.customer_id = :customer_id;");
     $stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
 
     $stmt->execute();
