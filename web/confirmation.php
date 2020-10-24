@@ -47,9 +47,9 @@ $stmt->execute();
 
 // $address_id = $db->lastInsertId('address2_address_id_seq');
 
-  $stmt = $db->prepare('INSERT INTO orders1 (customer_id) VALUES (:customer_id)');
-  $stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
-  $stmt->execute();
+$stmt = $db->prepare('INSERT INTO orders1 (customer_id) VALUES (:customer_id)');
+$stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
+$stmt->execute();
 
 
 // foreach ($topics as $topic) {
@@ -133,15 +133,18 @@ if ($_SESSION["button4"]) {
 </div>
 <div class="trial">
   <?php
-    $stmt = $db->prepare("SELECT address2.address_id, address_street, address_city, address_state, address_zip_code
+    $stmt = $db->prepare("SELECT address2.address_id, address_street, address_city, address_state, address_zip_code, customer_first_name, customer_last_name
       FROM address2 LEFT JOIN orders1
-      ON orders1.customer_id = address2.customer_id;");
-      // LEFT JOIN topic ON topic.id = scriptures_topic.topic_id
-      // GROUP BY scriptures.id
+      ON orders1.customer_id = address2.customer_id
+      LEFT JOIN customer_info ON customer_info.customer_id = orders1.customer_id
+      WHERE customer_id = :customer_id;");
+    $stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
+
     $stmt->execute();
     $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo $orders[0]["address_street"];
+    echo "<h1>" . $orders[0]["customer_first_name"] . " " . $orders[0]["customer_last_name"] . "</h1><br>";
+    echo "<h1>" . $orders[0]["address_street"] . "<br>" . $orders[0]["address_city"] . ", " . $orders[0]["address_state"] . " " . $orders[0]["address_zip_code"] . "</h1>";
 
     // array_to_string(array_agg(topic.name), ',') AS topics
 
