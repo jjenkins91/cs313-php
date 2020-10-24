@@ -25,6 +25,10 @@ body {
   flex-direction: column;
 }
 
+.address_name {
+  margin: 0;
+}
+
 .bodyContent{
   height: 800px;
   width: auto;
@@ -183,6 +187,10 @@ height: 40px;
   text-align: center;
   color: grey;
   padding-top: 20px;
+}
+
+.customer_name{
+  margin: 0;
 }
 
 .informationTitle {

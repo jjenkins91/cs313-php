@@ -87,18 +87,29 @@ session_start();
 </div>
 <div class="bodyContentConfirmation">
   <h1>
- <?php
-// $address1 = $_POST["address1"];
-// echo $address1 . ' ';
-// $address2 = $_POST["address2"];
-// echo $address2 . ' ';
-// $city = $_POST["city"];
-// echo $city . ', ';
-// $state = $_POST["state"];
-// echo $state . ' ';
-// $zipCode = $_POST["zipCode"];
-// echo $zipCode;
-  ?>
+    <?php
+      $stmt = $db->prepare("SELECT address2.address_id, address_street, address_city, address_state, address_zip_code, customer_first_name, customer_last_name
+        FROM address2 LEFT JOIN orders1
+        ON orders1.customer_id = address2.customer_id
+        LEFT JOIN customer_info ON customer_info.customer_id = orders1.customer_id
+        WHERE orders1.customer_id = :customer_id;");
+      $stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
+
+      $stmt->execute();
+      $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      echo "<h1 class='customer_name'>" . $orders[0]["customer_first_name"] . " " . $orders[0]["customer_last_name"] . "</h1><br>";
+      echo "<h1 class='address_name'>" . $orders[0]["address_street"] . "<br>" . $orders[0]["address_city"] . ", " . $orders[0]["address_state"] . " " . $orders[0]["address_zip_code"] . "</h1>";
+
+      // array_to_string(array_agg(topic.name), ',') AS topics
+
+      // foreach ($scriptures as $scripture) {
+      //   echo "<li>{$scripture['book']} {$scripture['chapter']}:
+      //   {$scripture['verse']} - <br>{$scripture['content']}
+      //   <br>{$scripture['topics']}</li>";
+      // }
+
+     ?>
   </h1>
 </div>
 <div class="orderConfirmationTitleSpace">
@@ -130,31 +141,6 @@ if ($_SESSION["button4"]) {
 }
 ?>
   </h1>
-</div>
-<div class="trial">
-  <?php
-    $stmt = $db->prepare("SELECT address2.address_id, address_street, address_city, address_state, address_zip_code, customer_first_name, customer_last_name
-      FROM address2 LEFT JOIN orders1
-      ON orders1.customer_id = address2.customer_id
-      LEFT JOIN customer_info ON customer_info.customer_id = orders1.customer_id
-      WHERE orders1.customer_id = :customer_id;");
-    $stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
-
-    $stmt->execute();
-    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    echo "<h1>" . $orders[0]["customer_first_name"] . " " . $orders[0]["customer_last_name"] . "</h1><br>";
-    echo "<h1>" . $orders[0]["address_street"] . "<br>" . $orders[0]["address_city"] . ", " . $orders[0]["address_state"] . " " . $orders[0]["address_zip_code"] . "</h1>";
-
-    // array_to_string(array_agg(topic.name), ',') AS topics
-
-    // foreach ($scriptures as $scripture) {
-    //   echo "<li>{$scripture['book']} {$scripture['chapter']}:
-    //   {$scripture['verse']} - <br>{$scripture['content']}
-    //   <br>{$scripture['topics']}</li>";
-    // }
-
-   ?>
 </div>
 <div class="footer">
   <h3 class="copyright">Copyright© October 2020 Jason Jenkins</h3>
