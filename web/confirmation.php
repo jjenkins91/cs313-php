@@ -28,10 +28,6 @@ $city = $_POST["city"];
 $state = $_POST["state"];
 $zipCode = $_POST["zipCode"];
 
-echo $address1;
-echo $city;
-echo $state;
-echo $zipCode;
 
 $stmt = $db->prepare('INSERT INTO customer_info(customer_first_name, customer_last_name) VALUES (:firstName, :lastName);');
 $stmt->bindValue(':firstName', $firstName, PDO::PARAM_STR);
@@ -40,7 +36,6 @@ $stmt->execute();
 
 $customer_id = $db->lastInsertId('customer_info_customer_id_seq');
 
-echo $customer_id;
 
 $stmt = $db->prepare('INSERT INTO address2(customer_id, address_street, address_city, address_state, address_zip_code) VALUES (:customer_id, :address1, :city, :state, :zipCode);');
 $stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
@@ -50,10 +45,10 @@ $stmt->bindValue(':state', $state, PDO::PARAM_STR);
 $stmt->bindValue(':zipCode', $zipCode, PDO::PARAM_INT);
 $stmt->execute();
 
-$address_id = $db->lastInsertId('address2_address_id_seq');
+// $address_id = $db->lastInsertId('address2_address_id_seq');
 
-  $stmt = $db->prepare('INSERT INTO orders1 (address_id) VALUES (:address_id)');
-  $stmt->bindValue(':address_id', $address_id, PDO::PARAM_INT);
+  $stmt = $db->prepare('INSERT INTO orders1 (customer_id) VALUES (:customer_id)');
+  $stmt->bindValue(':customer_id', $customer_id, PDO::PARAM_INT);
   $stmt->execute();
 
 
@@ -140,7 +135,7 @@ if ($_SESSION["button4"]) {
   <?php
     $stmt = $db->prepare("SELECT address2.address_id, address_street, address_city, address_state, address_zip_code
       FROM address2 LEFT JOIN orders1
-      ON order1.address_id = address2.address_id;");
+      ON orders1.customer_id = address2.customer_id;");
       // LEFT JOIN topic ON topic.id = scriptures_topic.topic_id
       // GROUP BY scriptures.id
     $stmt->execute();
