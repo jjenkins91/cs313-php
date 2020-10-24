@@ -97,6 +97,7 @@ body {
 }
 
 .bodyContentConfirmation {
+  text-align: center;
   height: 300px;
   width: auto;
   background-color: #eeecda;
