@@ -97,13 +97,13 @@ body {
 }
 
 .bodyContentConfirmation {
-  height: 200px;
+  height: 300px;
   width: auto;
   background-color: #eeecda;
   margin: 0px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .buttonOne {
